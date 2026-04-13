@@ -18,6 +18,8 @@ function init() {
     updateDate();
     renderTasks();
     setupEventListeners();
+    setupLedgerLogic();
+    setupStationaryLogic();
 }
 
 function updateDate() {
@@ -149,6 +151,74 @@ function renderTasks() {
 function saveAndRender() {
     localStorage.setItem('heritage-task-storage', JSON.stringify(tasks));
     renderTasks();
+}
+
+function setupLedgerLogic() {
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const importInput = document.getElementById('import-input');
+
+    exportBtn.addEventListener('click', () => {
+        const dataStr = JSON.stringify(tasks, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'heritage-ledger-archive.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    importBtn.addEventListener('click', () => {
+        importInput.click();
+    });
+
+    importInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const imported = JSON.parse(event.target.result);
+                if (Array.isArray(imported)) {
+                    tasks = imported;
+                    saveAndRender();
+                    alert('Ledger entries have been successfully restored.');
+                } else {
+                    alert('Invalid ledger format detected.');
+                }
+            } catch {
+                alert('The archive could not be read or is corrupted.');
+            }
+        };
+        reader.readAsText(file);
+        importInput.value = '';
+    });
+}
+
+function setupStationaryLogic() {
+    const trigger = document.getElementById('stationary-trigger');
+    const closeBtn = document.getElementById('close-stationary');
+    const page = document.getElementById('stationary-page');
+    const notepad = document.getElementById('stationary-notes');
+
+    // Load saved notes
+    notepad.value = localStorage.getItem('heritage-stationary-notes') || '';
+
+    // Toggle page visibility
+    trigger.addEventListener('click', () => {
+        page.classList.toggle('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        page.classList.remove('active');
+    });
+
+    notepad.addEventListener('input', () => {
+        localStorage.setItem('heritage-stationary-notes', notepad.value);
+    });
 }
 
 function escapeHtml(text) {

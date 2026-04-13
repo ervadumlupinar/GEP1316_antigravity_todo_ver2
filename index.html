@@ -54,6 +54,15 @@
                     </div>
                 </div>
             </form>
+            <div class="ledger-actions" style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1.5rem;">
+                <button id="export-btn" class="ledger-btn" title="Export Archives">
+                    <i data-lucide="download" style="width: 14px; height: 14px; margin-right: 6px;"></i> Export Ledger
+                </button>
+                <input type="file" id="import-input" accept="application/json" style="display: none;">
+                <button id="import-btn" class="ledger-btn" title="Restore Archives">
+                    <i data-lucide="upload" style="width: 14px; height: 14px; margin-right: 6px;"></i> Import Ledger
+                </button>
+            </div>
         </section>
 
         <ul id="task-list" class="task-list">
@@ -64,6 +73,28 @@
             Heritage Task &copy; 1892 &mdash; 2026 Manor Digital
         </footer>
     </main>
+
+    <!-- Secret Letter (Redesigned) -->
+    <div class="letter-wrapper">
+        <div class="letter-page" id="stationary-page">
+            <div class="paper-texture"></div>
+            <header class="letter-header">
+                <span class="letter-label">Confidential Correspondence</span>
+            </header>
+            <textarea id="stationary-notes" placeholder="Write your private thoughts on this fine stationary..."></textarea>
+            <div class="letter-footer">
+                <div class="wax-seal-inner"></div>
+                <span>Manor Archives</span>
+            </div>
+        </div>
+        <div class="desk-slot"></div>
+        <div class="letter-trigger-container" id="stationary-trigger">
+            <div class="paper-peek"></div>
+            <div class="wax-seal-button">
+                <div class="embossed-m">M</div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
