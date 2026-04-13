@@ -1,0 +1,318 @@
+/* Heritage Task | Old Money Aesthetic Design System */
+
+:root {
+    /* Color Palette: Navy, Gold, Parchment, Hunter Green */
+    --navy-deep: #0c1b2a;
+    --navy-mid: #1a2b3c;
+    --gold: #c5a059;
+    --gold-dim: #b38f4d;
+    --parchment: #f4f1ea;
+    --paper: #ffffff;
+    --hunter-green: #1d2c23;
+    --border-gold: 1px solid rgba(197, 160, 89, 0.3);
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.04);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Crimson Pro', serif;
+    --font-accent: 'Italianno', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--parchment);
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+        url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Subtle texture */
+    color: var(--navy-deep);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem;
+}
+
+.heritage-container {
+    width: 100%;
+    max-width: 650px;
+    background: var(--paper);
+    border: var(--border-gold);
+    box-shadow: var(--shadow-soft);
+    padding: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elegant Corner Ornaments */
+.heritage-container::before,
+.heritage-container::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold);
+    opacity: 0.5;
+}
+.heritage-container::before { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+.heritage-container::after { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+/* Header Area */
+.manor-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px double var(--gold);
+    padding-bottom: 2rem;
+}
+
+.motto {
+    font-family: var(--font-accent);
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: -0.5rem;
+    display: block;
+}
+
+.main-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: var(--navy-deep);
+}
+
+.date-display {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+/* Progress Section */
+.estate-progress {
+    margin-bottom: 2.5rem;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: var(--gold-dim);
+}
+
+.progress-bar-container {
+    height: 3px;
+    background: rgba(197, 160, 89, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+/* Entry Form */
+.task-form {
+    margin-bottom: 3rem;
+}
+
+.input-suite {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.primary-input-row {
+    display: flex;
+    gap: 1rem;
+}
+
+#todo-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(12, 27, 42, 0.1);
+    padding: 0.8rem 0;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--navy-deep);
+    transition: border-color 0.3s;
+}
+
+#todo-input:focus {
+    outline: none;
+    border-bottom-color: var(--gold);
+}
+
+#todo-category {
+    background: transparent;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--navy-deep);
+    cursor: pointer;
+}
+
+.add-btn {
+    background: var(--navy-deep);
+    color: var(--paper);
+    border: none;
+    padding: 0 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-btn:hover {
+    background: var(--navy-mid);
+    transform: translateY(-1px);
+}
+
+/* Filter Navigation */
+.filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: var(--navy-deep);
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    position: relative;
+}
+
+.filter-btn.active {
+    opacity: 1;
+    font-weight: 700;
+}
+
+.filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 25%;
+    width: 50%;
+    height: 1px;
+    background: var(--gold);
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-main {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.vintage-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.task-item.completed .vintage-checkbox {
+    background: var(--navy-deep);
+}
+
+.task-text {
+    font-size: 1.15rem;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.task-item.completed .task-text {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
+
+.category-badge {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    background: rgba(197, 160, 89, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    color: var(--gold-dim);
+    margin-left: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.task-item:hover .actions {
+    opacity: 1;
+}
+
+.del-btn {
+    background: none;
+    border: none;
+    color: rgba(12, 27, 42, 0.3);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.del-btn:hover {
+    color: #8b0000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .heritage-container { padding: 2rem; }
+    .main-title { font-size: 2.5rem; }
+    .filter-nav { gap: 1rem; flex-wrap: wrap; }
+}

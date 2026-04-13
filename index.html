@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Task | Estate Productivity</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Italianno&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="heritage-container">
+        <header class="manor-header">
+            <span class="motto">Noblesse Oblige</span>
+            <h1 class="main-title">Heritage Task</h1>
+            <div class="date-display" id="current-date">October 14, 2026</div>
+        </header>
+
+        <section class="estate-progress">
+            <div class="progress-label">
+                <span>Estate Status</span>
+                <span id="efficiency-percent">0% Completion</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+        </section>
+
+        <nav class="filter-nav">
+            <button class="filter-btn active" data-filter="all">Consolidated</button>
+            <button class="filter-btn" data-filter="Important">Urgent</button>
+            <button class="filter-btn" data-filter="Estate">Estate</button>
+            <button class="filter-btn" data-filter="Social">Social</button>
+            <button class="filter-btn" data-filter="Leisure">Leisure</button>
+        </nav>
+
+        <section class="task-form">
+            <form id="heritage-form">
+                <div class="input-suite">
+                    <div class="primary-input-row">
+                        <input type="text" id="todo-input" placeholder="Enter a new objective..." autocomplete="off">
+                        <select id="todo-category">
+                            <option value="Important">Urgent</option>
+                            <option value="Estate">Estate</option>
+                            <option value="Social">Social</option>
+                            <option value="Leisure">Leisure</option>
+                        </select>
+                        <button type="submit" class="add-btn">Append</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <ul id="task-list" class="task-list">
+            <!-- Objectives will be recorded here -->
+        </ul>
+
+        <footer class="manor-footer" style="margin-top: 4rem; text-align: center; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
+            Heritage Task &copy; 1892 &mdash; 2026 Manor Digital
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
